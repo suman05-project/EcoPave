@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoPave | Waste to Sustainable Pavement</title>
+<style>
+:root{--green:#176b4a;--deep:#103f30;--lime:#b8dc79;--cream:#f5f7ef;--ink:#19352b;--muted:#66766d;--line:#dfe8dc;--white:#fff;--orange:#e99a43;--shadow:0 14px 40px rgba(21,66,47,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}button,input,select{font:inherit}button{cursor:pointer}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:10px;font-size:1.25rem;font-weight:850;letter-spacing:-.5px;color:var(--deep)}.brandmark{height:38px;width:38px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:21px}.brand span em{color:var(--green);font-style:normal}.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{color:#53665b;text-decoration:none;font-size:.91rem;font-weight:650}.navlinks a:hover{color:var(--green)}.navlinks .navcta{background:var(--green);color:white;padding:10px 17px;border-radius:10px}.menu{display:none;border:0;background:none;font-size:25px;color:var(--deep)}
+.hero{padding:78px 6% 72px;background:radial-gradient(circle at 82% 25%,#d9ebc8 0,transparent 26%),linear-gradient(120deg,#f7f9f1,#edf5e8);display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center;min-height:520px}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--green);background:#e4f0df;border:1px solid #d1e5ca;padding:7px 12px;border-radius:30px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-size:clamp(2.7rem,5vw,4.7rem);line-height:1.04;letter-spacing:-.055em;margin:20px 0 18px;max-width:680px}.hero h1 span{color:var(--green)}.hero p{font-size:1.1rem;color:#5c7064;max-width:590px;margin:0 0 27px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:13px 19px;font-weight:750;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{transform:translateY(-2px);filter:brightness(.97)}.primary{background:var(--green);color:#fff;box-shadow:0 8px 20px #176b4a2b}.secondary{background:white;color:var(--deep);border:1px solid var(--line)}.hero-art{min-height:330px;border-radius:28px;background:linear-gradient(145deg,#174f39,#0e382b);position:relative;overflow:hidden;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #ffffff26;border-radius:50%;width:340px;height:340px}.hero-art:after{width:460px;height:460px}.paver-stack{position:relative;z-index:1;transform:rotate(-12deg);display:grid;grid-template-columns:repeat(3,90px);gap:8px}.paver{height:68px;border-radius:9px;background:linear-gradient(145deg,#d4d7b9,#8caa7c);box-shadow:inset 0 4px 7px #ffffff88,0 8px 12px #061f164d;border:1px solid #e5efc5}.paver:nth-child(2n){background:linear-gradient(145deg,#c5c7a5,#788f6b)}.paver:nth-child(3n){background:linear-gradient(145deg,#b4a98c,#716d54)}.art-label{position:absolute;bottom:22px;right:22px;color:#e5f3dd;font-weight:700;font-size:.82rem;letter-spacing:.06em}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 6%;margin-top:-1px}.stat{background:#fff;border:1px solid var(--line);padding:19px 22px;border-radius:0 0 16px 16px}.stat strong{display:block;color:var(--green);font-size:1.35rem}.stat span{font-size:.83rem;color:var(--muted)}
+section.content{padding:76px 6%}.section-head{max-width:720px;margin-bottom:30px}.kicker{color:var(--green);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850}.section-head h2{font-size:clamp(2rem,3vw,2.8rem);line-height:1.13;letter-spacing:-.04em;margin:9px 0 12px}.section-head p{color:var(--muted);margin:0}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow)}.panel h3{margin:0 0 7px;font-size:1.25rem}.panel .sub{color:var(--muted);font-size:.91rem;margin:0 0 20px}.field{margin:15px 0}.field label{display:block;font-weight:750;font-size:.88rem;margin-bottom:7px}.field select,.field input{width:100%;padding:12px 13px;border:1px solid #d9e3d8;border-radius:10px;background:#fbfcf9;color:var(--ink);outline:none}.field select:focus,.field input:focus{border-color:var(--green);box-shadow:0 0 0 3px #176b4a18}.materials{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.material{display:flex;align-items:center;gap:9px;padding:10px;border:1px solid var(--line);border-radius:10px;font-size:.88rem;font-weight:650;background:#fbfcf9}.material input{accent-color:var(--green);width:16px;height:16px}.full{width:100%;margin-top:12px}.result{display:none;margin-top:20px;border:1px solid #cfe1c8;background:#f4faef;border-radius:15px;padding:20px}.result.show{display:block;animation:rise .3s ease}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.result h4{font-size:1.16rem;margin:0 0 5px;color:var(--deep)}.result p{color:#52685a;margin:7px 0}.pill{display:inline-block;background:#e1efda;color:#276344;border-radius:30px;padding:4px 9px;font-size:.75rem;font-weight:800;margin:5px 4px 5px 0}.result ul,.guide ul,.guide ol{padding-left:20px;color:#52685a}.result li,.guide li{margin:6px 0}.notice{border-left:4px solid var(--orange);background:#fff8ec;padding:12px 14px;border-radius:8px;color:#75552e;font-size:.85rem;margin-top:14px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.info-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:22px;transition:.2s}.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.icon{width:43px;height:43px;border-radius:13px;background:#e8f2e2;display:grid;place-items:center;font-size:22px;margin-bottom:13px}.info-card h3{margin:0 0 6px;font-size:1.05rem}.info-card p{margin:0;color:var(--muted);font-size:.88rem}.tag{display:inline-block;margin-top:13px;font-size:.72rem;font-weight:800;color:var(--green);background:#edf5e8;padding:5px 9px;border-radius:20px}
+.guide-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px}.guide-menu{display:grid;gap:9px}.guide-menu button{text-align:left;border:1px solid var(--line);border-radius:11px;padding:13px;background:white;color:var(--ink);font-weight:700}.guide-menu button.active{background:var(--green);color:#fff;border-color:var(--green)}.guide{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px}.guide h3{margin-top:0}.guide p{color:var(--muted)}.guide .step{padding:12px 0;border-bottom:1px solid var(--line)}.guide .step:last-child{border:0}
+.dashboard{background:var(--deep);color:white;border-radius:24px;padding:35px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.dashboard h2{font-size:2rem;line-height:1.12;margin:0 0 10px}.dashboard p{color:#c6d9ce}.calcbox{background:#ffffff12;border:1px solid #ffffff26;padding:20px;border-radius:16px}.calcbox label{display:block;font-size:.86rem;font-weight:700;margin-bottom:7px}.calcbox input{width:100%;padding:11px;border-radius:9px;border:0;margin-bottom:12px}.calcbox .btn{background:var(--lime);color:var(--deep);width:100%}.calc-output{font-size:.9rem;color:#e5f4dc;margin-top:13px;min-height:24px}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.about{padding:20px;background:#fff;border:1px solid var(--line);border-radius:15px}.about strong{display:block;margin-bottom:5px}.about span{font-size:.88rem;color:var(--muted)}
+footer{background:#0c3024;color:#dce9df;padding:35px 6%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer p{margin:5px 0;color:#aac2b4;font-size:.84rem}.modal{display:none;position:fixed;inset:0;background:#0b2018a8;z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{max-width:550px;background:white;border-radius:18px;padding:27px;max-height:85vh;overflow:auto}.modalbox h3{margin-top:0}.close{float:right;border:0;background:#edf3e9;border-radius:8px;padding:6px 10px}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:55px}.hero-art{min-height:260px}.tool-grid,.guide-layout,.dashboard{grid-template-columns:1fr}.cards,.about-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav{padding:0 5%}.menu{display:block}.navlinks{display:none;position:absolute;top:73px;left:0;right:0;background:#fff;padding:18px 6%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{padding:48px 5%}.stats{padding:0 5%;grid-template-columns:1fr}.stat{border-radius:12px}.content{padding:58px 5%!important}.cards,.about-grid{grid-template-columns:1fr}.panel{padding:20px}.materials{grid-template-columns:1fr 1fr}.dashboard{padding:25px}.paver-stack{transform:scale(.85) rotate(-12deg)}footer{padding:30px 5%}}
+</style>
+</head>
+<body>
+<nav class="nav">
+ <div class="brand"><div class="brandmark">♻</div><span>Eco<em>Pave</em></span></div>
+ <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
+ <div class="navlinks" id="navlinks">
+  <a href="#home">Home</a><a href="#designer">Paver Designer</a><a href="#materials">Materials</a><a href="#guide">Process Guide</a><a href="#advanced">Design Lab</a><a href="#about">About</a><a class="navcta" href="#designer">Try EcoPave ↗</a>
+ </div>
+</nav>
+<header class="hero" id="home">
+ <div>
+  <span class="eyebrow">♻ Circular construction • Sustainable future</span>
+  <h1>Waste today.<br><span>Pavement tomorrow.</span></h1>
+  <p>Discover how discarded materials can find a second life in sustainable paving blocks. Explore material combinations, get application-based suggestions and learn the making process.</p>
+  <div class="actions"><a class="btn primary" href="#designer">Design a paver ↗</a><a class="btn secondary" href="#materials">Explore materials</a></div>
+ </div>
+ <div class="hero-art" aria-label="Illustration of sustainable paving blocks"><div class="paver-stack"><div class="paver"></div><div class="paver"></div><div class="paver"></div><div class="paver"></div><div class="paver"></div><div class="paver"></div><div class="paver"></div><div class="paver"></div><div class="paver"></div></div><div class="art-label">RETHINK • REUSE • REBUILD</div></div>
+</header>
+<div class="stats">
+ <div class="stat"><strong>2 smart tools</strong><span>Material-led and application-led recommendations</span></div>
+ <div class="stat"><strong>7+ waste streams</strong><span>Explore potential uses for common waste materials</span></div>
+ <div class="stat"><strong>Built for learning</strong><span>Process guidance and quality checks in one place</span></div>
+</div>
+
+<section class="content" id="designer">
+ <div class="section-head"><span class="kicker">Interactive design studio</span><h2>What would you like to create?</h2><p>Choose a route below. EcoPave uses a transparent, rule-based guide to suggest possible paver concepts—not certified mix designs.</p></div>
+ <div class="tool-grid">
+  <div class="panel">
+   <h3>♻ Waste-to-Paver Generator</h3><p class="sub">Select the waste materials you have available.</p>
+   <div class="field"><label>Available waste materials</label><div class="materials" id="materialChecks">
+    <label class="material"><input type="checkbox" value="cdw"> C&D / recycled concrete</label>
+    <label class="material"><input type="checkbox" value="brick"> Crushed brick / tile</label>
+    <label class="material"><input type="checkbox" value="glass"> Waste glass</label>
+    <label class="material"><input type="checkbox" value="flyash"> Fly ash</label>
+    <label class="material"><input type="checkbox" value="plastic"> Waste plastic</label>
+    <label class="material"><input type="checkbox" value="rubber"> Waste rubber</label>
+    <label class="material"><input type="checkbox" value="ceramic"> Ceramic waste</label>
+   </div></div>
+   <div class="field"><label for="wasteUse">Intended application</label><select id="wasteUse"><option value="footpath">Footpath / pedestrian area</option><option value="garden">Garden pathway / landscaping</option><option value="parking">Residential parking / light vehicles</option><option value="road">Roadside / heavy vehicle area</option><option value="drainage">Permeable / water-draining area</option></select></div>
+   <button class="btn primary full" id="generateBtn">Generate my paver idea ↗</button>
+   <div class="result" id="wasteResult" aria-live="polite"></div>
+  </div>
+  <div class="panel">
+   <h3>⌖ Smart Paver Advisor</h3><p class="sub">Tell us about the place and performance you need.</p>
+   <div class="field"><label for="application">Where will the paver be used?</label><select id="application"><option value="footpath">Footpath / pedestrian area</option><option value="garden">Garden / decorative pathway</option><option value="parking">Driveway / light vehicle parking</option><option value="road">Road / heavy traffic</option><option value="drainage">Area needing water permeability</option></select></div>
+   <div class="field"><label for="priority">Your main priority</label><select id="priority"><option value="balanced">Balanced strength and sustainability</option><option value="lowcost">Use locally available, low-cost waste</option><option value="appearance">Decorative appearance</option><option value="water">Water drainage / permeability</option></select></div>
+   <div class="field"><label for="available">Waste materials available (optional)</label><select id="available"><option value="mixed">Mixed / not sure</option><option value="cdw">Mostly C&D waste</option><option value="plastic">Mostly plastic waste</option><option value="glass">Mostly glass waste</option><option value="brick">Mostly brick / ceramic waste</option><option value="flyash">Mostly fly ash</option></select></div>
+   <button class="btn primary full" id="advisorBtn">Find my sustainable paver ↗</button>
+   <div class="result" id="advisorResult" aria-live="polite"></div>
+  </div>
+ </div>
+</section>
+
+<section class="content" id="materials" style="background:#edf3e9">
+ <div class="section-head"><span class="kicker">Material library</span><h2>Give waste a second purpose.</h2><p>Learn the potential role of different waste streams in paving products. Actual use depends on material quality, processing and testing.</p></div>
+ <div class="cards">
+  <article class="info-card"><div class="icon">🧱</div><h3>Recycled concrete (RCA)</h3><p>Processed concrete from demolition can partially replace natural coarse or fine aggregate in cement-bound pavers.</p><span class="tag">Aggregate replacement</span></article>
+  <article class="info-card"><div class="icon">🏺</div><h3>Brick and tile waste</h3><p>Crushed, graded brick or tile can be investigated as an alternative aggregate, subject to absorption and strength checks.</p><span class="tag">Alternative aggregate</span></article>
+  <article class="info-card"><div class="icon">🔷</div><h3>Waste glass</h3><p>Washed and size-controlled glass may be used as fine aggregate or finely ground supplementary material. ASR risk must be assessed.</p><span class="tag">Fine aggregate / powder</span></article>
+  <article class="info-card"><div class="icon">🌫️</div><h3>Fly ash</h3><p>Suitable fly ash can act as a supplementary cementitious material in cement-based mixes when its properties and proportions are verified.</p><span class="tag">Cementitious addition</span></article>
+  <article class="info-card"><div class="icon">♻️</div><h3>Waste plastic</h3><p>Selected thermoplastics have been studied in plastic-sand composite pavers. Sorting, controlled processing and emissions safety are essential.</p><span class="tag">Polymer composite</span></article>
+  <article class="info-card"><div class="icon">⚫</div><h3>Waste rubber</h3><p>Crumb rubber can be explored as a partial modifier or aggregate replacement; it may affect stiffness, strength and abrasion performance.</p><span class="tag">Rubber-modified mix</span></article>
+  <article class="info-card"><div class="icon">◼</div><h3>Ceramic waste</h3><p>Crushed ceramic sanitaryware or tiles can be assessed as aggregate replacement after cleaning, grading and absorption testing.</p><span class="tag">Alternative aggregate</span></article>
+ </div>
+</section>
+
+<section class="content" id="guide">
+ <div class="section-head"><span class="kicker">From concept to prototype</span><h2>Explore the manufacturing process.</h2><p>Select a material family to see a high-level process outline and the checks a civil engineering student should consider.</p></div>
+ <div class="guide-layout">
+  <div class="guide-menu" id="guideMenu">
+   <button class="active" data-guide="cdw">Recycled aggregate concrete</button>
+   <button data-guide="plastic">Plastic-sand composite</button>
+   <button data-guide="glass">Glass-modified concrete</button>
+   <button data-guide="flyash">Fly ash blended concrete</button>
+  </div>
+  <div class="guide" id="guideContent"></div>
+ </div>
+</section>
+
+<section class="content" id="impact" style="padding-top:20px">
+ <div class="dashboard">
+  <div><span class="kicker" style="color:#c3e69d">Waste impact estimator</span><h2>Make the impact visible.</h2><p>Estimate how much waste material could be diverted into a proposed batch. This is a simple educational calculator, not a mix-design or life-cycle assessment tool.</p></div>
+  <div class="calcbox"><label for="wasteMass">Waste material planned (kg)</label><input id="wasteMass" type="number" min="0" step="0.1" placeholder="e.g. 100"><label for="wasteType">Material category</label><select id="wasteType"><option>Recycled concrete / C&D waste</option><option>Brick / ceramic waste</option><option>Glass waste</option><option>Plastic waste</option><option>Rubber waste</option><option>Fly ash</option></select><button class="btn" id="estimateBtn">Calculate estimated diversion</button><div class="calc-output" id="calcOutput" aria-live="polite">Enter a mass to calculate the proposed waste input.</div></div>
+ </div>
+</section>
+
+<section class="content" id="about">
+ <div class="section-head"><span class="kicker">About the project</span><h2>Engineering a more circular future.</h2><p>EcoPave is an educational decision-support prototype that connects waste-material options with possible paving applications and manufacturing knowledge.</p></div>
+ <div class="about-grid">
+  <div class="about"><strong>01 · Reduce</strong><span>Explore ways to reduce dependence on virgin construction materials.</span></div>
+  <div class="about"><strong>02 · Reuse</strong><span>Identify waste streams that may be processed into useful paving resources.</span></div>
+  <div class="about"><strong>03 · Verify</strong><span>Encourage testing for strength, absorption, abrasion and durability before use.</span></div>
+ </div>
+ <div class="notice" style="margin-top:20px"><strong>Engineering disclaimer:</strong> Recommendations on this website are conceptual and educational. They are not approved mix proportions, structural design advice or a guarantee of compliance. Do not use a suggested mix for construction without material characterization, trial batches, laboratory testing and review against applicable standards (including the current edition of IS 15658 and relevant material standards). Do not heat or melt waste plastic in an uncontrolled setting; plastic processing requires suitable industrial controls and emissions management.</div>
+ <p style="font-size:.82rem;color:#718077;margin-top:15px">Learning references: BIS IS 15658 (Precast concrete blocks for paving); research on recycled C&D aggregates in paver blocks; Concrete Society guidance on recycled glass aggregate and alkali-silica reaction.</p>
+</section>
+
+<section class="content" id="advanced" style="background:#f0f5eb">
+ <div class="section-head"><span class="kicker">EcoPave design lab · Version 2</span><h2>Turn an idea into a project estimate.</h2><p>Explore a block concept, estimate the material quantity for a batch, compare alternatives and export a summary for your presentation.</p></div>
+ <div class="tool-grid">
+  <div class="panel">
+   <h3>▦ Paver Visual Designer</h3><p class="sub">Create a simple visual concept from your chosen dimensions and finish.</p>
+   <div class="field"><label for="visualShape">Block shape</label><select id="visualShape"><option value="rectangle">Rectangle</option><option value="hexagon">Hexagon</option><option value="zigzag">Interlocking / zigzag (illustrative)</option></select></div>
+   <div class="field"><label for="visualColour">Surface finish</label><select id="visualColour"><option value="earth">Earth / recycled aggregate</option><option value="green">Natural green</option><option value="charcoal">Charcoal</option><option value="sand">Sandstone</option></select></div>
+   <div class="field"><label for="visualLength">Length (mm)</label><input type="number" id="visualLength" value="200" min="50" max="1000"></div>
+   <div class="field"><label for="visualWidth">Width (mm)</label><input type="number" id="visualWidth" value="100" min="50" max="1000"></div>
+   <div class="field"><label for="visualThickness">Thickness (mm)</label><input type="number" id="visualThickness" value="60" min="20" max="200"></div>
+   <button class="btn primary full" id="drawBlockBtn">Generate block visual ↗</button>
+   <div id="visualOutput" class="result show" style="text-align:center">
+    <svg id="blockSvg" viewBox="0 0 420 210" role="img" aria-label="Paver block concept" style="width:100%;max-height:210px">
+     <ellipse cx="210" cy="175" rx="125" ry="15" fill="#19352b" opacity=".12"/>
+     <path d="M100 75 L280 75 L325 110 L145 110 Z" fill="#c3b18e" stroke="#756a55" stroke-width="2"/>
+     <path d="M145 110 L325 110 L325 155 L145 155 Z" fill="#8f8064" stroke="#756a55" stroke-width="2"/>
+     <path d="M100 75 L145 110 L145 155 L100 120 Z" fill="#aa9979" stroke="#756a55" stroke-width="2"/>
+     <text x="210" y="195" text-anchor="middle" font-size="12" fill="#52685a">Concept illustration · not to scale</text>
+    </svg>
+    <p id="visualCaption" style="font-weight:750;margin:5px 0">Rectangle · 200 × 100 × 60 mm</p>
+   </div>
+   <div class="notice">The drawing is a visual concept only. It does not represent a structural drawing, mould specification or approved paver geometry.</div>
+  </div>
+  <div class="panel">
+   <h3>▤ Batch Material Estimator</h3><p class="sub">Estimate the approximate batch volume and mass from your block dimensions.</p>
+   <div class="field"><label for="batchCount">Number of paver blocks</label><input type="number" id="batchCount" value="100" min="1" max="100000"></div>
+   <div class="field"><label for="batchLength">Length (mm)</label><input type="number" id="batchLength" value="200" min="50"></div>
+   <div class="field"><label for="batchWidth">Width (mm)</label><input type="number" id="batchWidth" value="100" min="50"></div>
+   <div class="field"><label for="batchThickness">Thickness (mm)</label><input type="number" id="batchThickness" value="60" min="20"></div>
+   <div class="field"><label for="batchDensity">Assumed finished-product density (kg/m³)</label><select id="batchDensity"><option value="2300">Cement concrete (illustrative 2300)</option><option value="2100">Recycled aggregate concrete (illustrative 2100)</option><option value="1800">Plastic-sand composite (illustrative 1800)</option><option value="2000">Other / preliminary estimate (2000)</option></select></div>
+   <div class="field"><label for="wastePercent">Waste-derived fraction by mass (%)</label><input type="number" id="wastePercent" value="20" min="0" max="100"></div>
+   <div class="field"><label for="batchWastage">Allowance for handling / wastage (%)</label><input type="number" id="batchWastage" value="5" min="0" max="30"></div>
+   <button class="btn primary full" id="batchCalcBtn">Calculate batch estimate ↗</button>
+   <div class="result" id="batchResult" aria-live="polite"></div>
+  </div>
+ </div>
+ <div class="tool-grid" style="margin-top:22px">
+  <div class="panel">
+   <h3>₹ Cost Comparison</h3><p class="sub">Enter your local estimated unit costs to compare a proposed option with a conventional option.</p>
+   <div class="field"><label for="costQty">Number of blocks</label><input type="number" id="costQty" value="1000" min="1"></div>
+   <div class="field"><label for="conventionalCost">Conventional block cost (₹ / block)</label><input type="number" id="conventionalCost" value="18" min="0" step=".01"></div>
+   <div class="field"><label for="ecoCost">EcoPave concept cost (₹ / block)</label><input type="number" id="ecoCost" value="16" min="0" step=".01"></div>
+   <button class="btn primary full" id="costCalcBtn">Compare estimated costs ↗</button>
+   <div class="result" id="costResult" aria-live="polite"></div>
+   <div class="notice">Enter costs from supplier quotations or your own feasibility assumptions. This tool does not predict market prices.</div>
+  </div>
+  <div class="panel">
+   <h3>⇄ Compare Two Paver Concepts</h3><p class="sub">Compare two alternatives using your own trial or literature values.</p>
+   <div class="field"><label for="compareNameA">Option A name</label><input id="compareNameA" value="Recycled aggregate paver"></div>
+   <div class="field"><label for="compareNameB">Option B name</label><input id="compareNameB" value="Plastic-sand paver"></div>
+   <div class="field"><label for="compareStrengthA">Option A compressive strength (MPa)</label><input id="compareStrengthA" type="number" min="0" step=".1" placeholder="Enter tested value"></div>
+   <div class="field"><label for="compareStrengthB">Option B compressive strength (MPa)</label><input id="compareStrengthB" type="number" min="0" step=".1" placeholder="Enter tested value"></div>
+   <div class="field"><label for="compareAbsA">Option A water absorption (%)</label><input id="compareAbsA" type="number" min="0" step=".1" placeholder="Enter tested value"></div>
+   <div class="field"><label for="compareAbsB">Option B water absorption (%)</label><input id="compareAbsB" type="number" min="0" step=".1" placeholder="Enter tested value"></div>
+   <button class="btn primary full" id="compareBtn">Compare entered values ↗</button>
+   <div class="result" id="compareResult" aria-live="polite"></div>
+   <div class="notice">Only compare values measured using comparable test methods, specimen dimensions, curing ages and standards. Higher strength or lower absorption alone does not establish overall suitability.</div>
+  </div>
+ </div>
+ <div class="panel" style="margin-top:22px">
+  <h3>⇩ Download your EcoPave project summary</h3><p class="sub">Generate a text report containing your latest estimates and entered comparison values. You can save it or add it to your ESL presentation file.</p>
+  <button class="btn primary" id="reportBtn">Download project summary (.txt) ↗</button>
+  <span id="reportStatus" style="margin-left:12px;color:#52705c;font-size:.88rem" aria-live="polite"></span>
+ </div>
+</section>
+
+<footer><div><div class="brand" style="color:#fff"><div class="brandmark" style="background:#b8dc79;color:#103f30">♻</div><span>Eco<em style="color:#b8dc79">Pave</em></span></div><p>Turning waste into walkable sustainability.</p></div><div><strong>ESL · Civil Engineering Project</strong><p>Interactive educational prototype</p><p>© 2026 EcoPave</p></div></footer>
+
+<script>
+const materialData={
+ cdw:{name:"Recycled aggregate concrete paver",role:"Processed recycled concrete can partially replace natural aggregate in a cement-bound paver.",process:["Sort C&D waste and remove wood, gypsum, soil and other contaminants.","Crush the concrete, remove reinforcement and grade the aggregate to suitable sizes.","Test grading, density, water absorption and contamination; adjust water demand based on measured absorption.","Prepare trial concrete mixes with a controlled replacement level and compact in a paver mould.","Cure appropriately, then test compressive strength, water absorption, abrasion and relevant durability properties."],tests:["Aggregate grading and water absorption","Compressive strength","Water absorption","Abrasion resistance"]},
+ brick:{name:"Crushed brick / tile aggregate paver",role:"Clean, graded brick or tile fragments may partially replace aggregate in cement-bound paving units.",process:["Separate masonry/ceramic waste and remove plaster, soil and other contaminants.","Crush and sieve to a controlled grading; avoid excessive dust and flaky pieces.","Measure water absorption and precondition aggregate if required by the trial mix.","Prepare small trial batches with partial replacement; compare with a control mix.","Compact, cure and test strength, absorption and abrasion before considering an application."],tests:["Particle size distribution","Water absorption","Compressive strength","Abrasion resistance"]},
+ glass:{name:"Glass-modified concrete paver",role:"Washed, size-controlled recycled glass may be studied as fine aggregate or finely ground powder in cementitious mixtures.",process:["Sort by glass type and remove ceramics, metals, labels and organic contamination.","Wash and crush using suitable enclosed equipment; control sharp fragments and dust.","Select a particle size and evaluate alkali-silica reaction (ASR) risk with the cement system.","Prepare trial batches using a conservative replacement level and suitable mitigation only when supported by testing.","Cure and assess strength, absorption, abrasion and expansion/durability indicators."],tests:["Particle size and cleanliness","ASR assessment","Compressive strength","Water absorption and abrasion"]},
+ flyash:{name:"Fly-ash blended concrete paver",role:"Quality-controlled fly ash may be used as a supplementary cementitious material in a cement-based paver mix.",process:["Obtain fly ash from a traceable source and review its chemical and physical test certificate.","Check fineness, loss on ignition and relevant conformity requirements.","Design trial blends with a measured cement replacement level; do not assume a universal percentage.","Mix, compact and cure specimens under controlled conditions.","Test early and later-age strength, absorption and durability; compare with the control mix."],tests:["Fly ash conformity / fineness","Compressive strength at relevant ages","Water absorption","Durability checks"]},
+ plastic:{name:"Plastic-sand composite paver (research concept)",role:"Selected thermoplastics have been studied as a binder in plastic-sand composites; this is a different product system from cement concrete.",process:["Identify and sort polymer type; do not mix unknown plastics or PVC into a heating process.","Wash, dry and size-reduce material using appropriate equipment.","Only in a properly equipped, controlled facility, process the selected polymer with graded sand under a validated temperature and ventilation protocol.","Mould and cool under controlled conditions; document batch composition and processing parameters.","Test compressive strength, abrasion, heat/UV ageing, leaching and fire behaviour before any use."],tests:["Polymer identification","Compressive and abrasion performance","UV / heat ageing","Leaching and fire-safety assessment"]}
+};
+function showResult(el,html){el.innerHTML=html;el.classList.add("show");el.scrollIntoView({behavior:"smooth",block:"nearest"})}
+function usageText(v){return ({footpath:"pedestrian use",garden:"garden and landscaping use",parking:"light-vehicle areas",road:"heavy-traffic areas",drainage:"water-management / permeable paving applications"})[v]}
+document.getElementById("generateBtn").addEventListener("click",()=>{
+ const chosen=[...document.querySelectorAll('#materialChecks input:checked')].map(x=>x.value);
+ const use=document.getElementById("wasteUse").value, out=document.getElementById("wasteResult");
+ if(!chosen.length){showResult(out,'<h4>Select at least one material</h4><p>Choose one or more waste materials above, then generate your paver concept.</p>');return}
+ const primary=chosen[0], d=materialData[primary];
+ const names=chosen.map(x=>materialData[x].name);
+ const extra=chosen.length>1?'<p><strong>Other selected materials:</strong> '+chosen.slice(1).map(x=>materialData[x].name).join("; ")+'. Consider each as a separate trial variable rather than combining all materials at once.</p>':'';
+ const road=use==="road";
+ showResult(out,`<span class="pill">Concept generated</span><span class="pill">${usageText(use)}</span><h4>${d.name}</h4><p>${d.role}</p><p><strong>Suggested concept:</strong> Start with a control mix and investigate partial replacement using <b>${chosen.map(x=>materialData[x].name.split(" ")[0]).join(", ")}</b>. The first selected material is used to display the most relevant process guide.</p>${extra}<p><strong>High-level manufacturing route</strong></p><ol>${d.process.map(s=>`<li>${s}</li>`).join("")}</ol><p><strong>Quality checks</strong></p><ul>${d.tests.map(s=>`<li>${s}</li>`).join("")}</ul><div class="notice">${road?"Heavy-traffic use requires verified performance to the applicable grade and project specification. This concept alone is not evidence of suitability.":"Application suitability cannot be confirmed from material choice alone. Test the finished paver against the required grade and site conditions."} See the Process Guide for more detail.</div>`);
+ document.querySelectorAll("#guideMenu button").forEach(b=>b.classList.toggle("active",b.dataset.guide===primary));
+ renderGuide(primary);
+});
+document.getElementById("advisorBtn").addEventListener("click",()=>{
+ const app=document.getElementById("application").value, priority=document.getElementById("priority").value, avail=document.getElementById("available").value;
+ let key="cdw", title="Recycled aggregate concrete paver", why="Recycled concrete aggregate is a well-studied route for replacing part of the natural aggregate in cement-bound pavers.";
+ if(app==="garden"||priority==="appearance"){key=avail==="glass"?"glass":avail==="brick"?"brick":"ceramic";title=materialData[key].name;why="A carefully graded recycled aggregate can provide a distinctive surface texture or appearance, subject to finish and durability trials."}
+ if(app==="drainage"){key="cdw";title="Permeable paving system using recycled aggregate (concept)";why="A permeable system needs a designed interconnected void structure and a suitable bedding/base/drainage layer. Recycled aggregate may be explored only after grading, clogging and strength tests."}
+ if(avail==="plastic"&&priority==="lowcost"&&app!=="road"){key="plastic";title=materialData.plastic.name;why="A plastic-sand composite is a separate research pathway that may use selected thermoplastics, but it requires controlled processing and additional environmental safety testing."}
+ if(avail==="glass"&&app!=="garden"){key="glass";title=materialData.glass.name;why=materialData.glass.role}
+ if(avail==="flyash"){key="flyash";title=materialData.flyash.name;why=materialData.flyash.role}
+ if(avail==="brick"){key="brick";title=materialData.brick.name;why=materialData.brick.role}
+ const warning=app==="road"?"Heavy-traffic roads require a specified paver grade and verified test results; this early-stage advisor cannot approve a design.":"For final selection, establish the required grade and test the actual product.";
+ const d=materialData[key],out=document.getElementById("advisorResult");
+ showResult(out,`<span class="pill">EcoPave recommendation</span><span class="pill">${usageText(app)}</span><h4>${title}</h4><p>${why}</p><p><strong>Potential material route:</strong> ${d.role}</p><p><strong>Suggested next steps</strong></p><ol><li>Characterize and clean the available waste stream.</li><li>Prepare a conventional control sample and small trial batches.</li><li>Compare strength, water absorption and abrasion results.</li><li>Check the relevant IS 15658 requirements and project specification before selecting a grade.</li></ol><p><strong>Process guide:</strong> ${d.process[0]}</p><div class="notice">${warning} The recommendation is a starting point for academic exploration, not a certified design.</div>`);
+ document.querySelectorAll("#guideMenu button").forEach(b=>b.classList.toggle("active",b.dataset.guide===key));renderGuide(key);
+});
+function renderGuide(key){const d=materialData[key]||materialData.cdw;document.getElementById("guideContent").innerHTML=`<span class="kicker">Manufacturing overview</span><h3>${d.name}</h3><p>${d.role}</p><div class="step"><strong>Process outline</strong><ol>${d.process.map(s=>`<li>${s}</li>`).join("")}</ol></div><div class="step"><strong>Suggested laboratory checks</strong><ul>${d.tests.map(s=>`<li>${s}</li>`).join("")}</ul></div><div class="notice">This is a conceptual sequence. Exact proportions, processing conditions and acceptance limits must come from standards, material testing and a qualified supervisor.</div>`}
+document.querySelectorAll("#guideMenu button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#guideMenu button").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderGuide(b.dataset.guide)}));
+renderGuide("cdw");
+document.getElementById("estimateBtn").addEventListener("click",()=>{const mass=parseFloat(document.getElementById("wasteMass").value),type=document.getElementById("wasteType").value,output=document.getElementById("calcOutput");if(!Number.isFinite(mass)||mass<=0){output.textContent="Please enter a number greater than zero.";return}output.textContent=`Proposed waste input: ${mass.toLocaleString(undefined,{maximumFractionDigits:2})} kg of ${type.toLowerCase()}. This is the planned input mass only—not a verified amount of waste diverted or a carbon-saving estimate.`});
+document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navlinks").classList.toggle("open"));
+document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("open")));
+
+// EcoPave Version 2: visual design, transparent quantity/cost estimates and exportable summary.
+let ecoPaveState = {batch:null,cost:null,comparison:null,visual:null};
+function validPositive(id,label){const v=Number(document.getElementById(id).value);if(!Number.isFinite(v)||v<=0)throw new Error(label+" must be greater than zero.");return v}
+function blockPath(shape){
+ if(shape==="hexagon") return "M145 72 L275 72 L330 112 L275 152 L145 152 L90 112 Z";
+ if(shape==="zigzag") return "M105 72 L185 72 L185 92 L265 92 L265 72 L315 72 L315 112 L285 112 L285 152 L205 152 L205 132 L125 132 L125 152 L105 152 Z";
+ return "M100 75 L280 75 L325 110 L145 110 Z";
+}
+document.getElementById("drawBlockBtn").addEventListener("click",()=>{
+ try{
+  const shape=document.getElementById("visualShape").value, colour=document.getElementById("visualColour").value;
+  const l=validPositive("visualLength","Length"),w=validPositive("visualWidth","Width"),t=validPositive("visualThickness","Thickness");
+  const palettes={earth:["#c9b994","#8f8064","#aa9979","#6d604c"],green:["#b8d69b","#72975c","#8eae72","#527442"],charcoal:["#9a9f9a","#555e59","#737d76","#3e4741"],sand:["#e5c99a","#ad8758","#c5a474","#84633e"]};
+  const c=palettes[colour],svg=document.getElementById("blockSvg");
+  if(shape==="hexagon"){
+   svg.innerHTML=`<ellipse cx="210" cy="174" rx="126" ry="13" fill="#19352b" opacity=".12"/><path d="M145 72 L275 72 L330 112 L275 152 L145 152 L90 112 Z" fill="${c[0]}" stroke="${c[3]}" stroke-width="2"/><path d="M145 152 L275 152 L275 169 L145 169 Z" fill="${c[1]}" stroke="${c[3]}" stroke-width="2"/><path d="M275 152 L330 112 L330 129 L275 169 Z" fill="${c[2]}" stroke="${c[3]}" stroke-width="2"/><text x="210" y="195" text-anchor="middle" font-size="12" fill="#52685a">Concept illustration · not to scale</text>`;
+  }else{
+   const top=blockPath(shape);
+   svg.innerHTML=`<ellipse cx="210" cy="174" rx="126" ry="13" fill="#19352b" opacity=".12"/><path d="${top}" fill="${c[0]}" stroke="${c[3]}" stroke-width="2"/><path d="M145 110 L325 110 L325 155 L145 155 Z" fill="${c[1]}" stroke="${c[3]}" stroke-width="2"/><path d="M100 75 L145 110 L145 155 L100 120 Z" fill="${c[2]}" stroke="${c[3]}" stroke-width="2"/><text x="210" y="195" text-anchor="middle" font-size="12" fill="#52685a">Concept illustration · not to scale</text>`;
+  }
+  const shapeName={rectangle:"Rectangle",hexagon:"Hexagon",zigzag:"Interlocking / zigzag"}[shape];
+  document.getElementById("visualCaption").textContent=`${shapeName} · ${l} × ${w} × ${t} mm`;
+  ecoPaveState.visual={shape:shapeName,colour,length:l,width:w,thickness:t};
+ }catch(e){alert(e.message)}
+});
+document.getElementById("batchCalcBtn").addEventListener("click",()=>{
+ const out=document.getElementById("batchResult");
+ try{
+  const n=validPositive("batchCount","Block count"),l=validPositive("batchLength","Length"),w=validPositive("batchWidth","Width"),t=validPositive("batchThickness","Thickness");
+  const density=validPositive("batchDensity","Density"),pct=Number(document.getElementById("wastePercent").value),loss=Number(document.getElementById("batchWastage").value);
+  if(pct<0||pct>100||loss<0||loss>30)throw new Error("Waste fraction must be 0–100% and handling allowance 0–30%.");
+  const net=n*l*w*t/1e9, gross=net*(1+loss/100),mass=gross*density,waste=mass*pct/100,other=mass-waste;
+  ecoPaveState.batch={count:n,lengthMm:l,widthMm:w,thicknessMm:t,densityKgM3:density,wastePercent:pct,handlingPercent:loss,netVolumeM3:net,estimatedBatchVolumeM3:gross,estimatedMassKg:mass,wasteDerivedMassKg:waste,remainingMassKg:other};
+  showResult(out,`<span class="pill">Preliminary estimate</span><h4>Batch quantity summary</h4><p>Net geometric volume: <strong>${net.toFixed(4)} m³</strong></p><p>Volume including ${loss}% allowance: <strong>${gross.toFixed(4)} m³</strong></p><p>Estimated batch mass at ${density} kg/m³: <strong>${mass.toFixed(1)} kg</strong></p><p>Waste-derived fraction (${pct}% by mass): <strong>${waste.toFixed(1)} kg</strong></p><p>Remaining mix mass: <strong>${other.toFixed(1)} kg</strong></p><div class="notice">This is a geometry-and-assumed-density estimate, not a validated mix design. It does not calculate cement, water or aggregate proportions. Actual density, compaction, voids, shape and production losses must be measured.</div>`);
+ }catch(e){showResult(out,`<h4>Check your inputs</h4><p>${e.message}</p>`)}
+});
+document.getElementById("costCalcBtn").addEventListener("click",()=>{
+ const out=document.getElementById("costResult");
+ try{
+  const n=validPositive("costQty","Quantity"),a=Number(document.getElementById("conventionalCost").value),b=Number(document.getElementById("ecoCost").value);
+  if(!Number.isFinite(a)||!Number.isFinite(b)||a<0||b<0)throw new Error("Enter non-negative costs for both options.");
+  const ca=n*a,cb=n*b,diff=ca-cb,pct=ca>0?diff/ca*100:0;
+  ecoPaveState.cost={quantity:n,conventionalPerBlock:a,ecoPavePerBlock:b,conventionalTotal:ca,ecoPaveTotal:cb,difference:diff,percentage:pct};
+  showResult(out,`<span class="pill">User-entered cost scenario</span><h4>${diff>=0?"Potential estimated saving":"Potential estimated additional cost"}: ₹${Math.abs(diff).toLocaleString("en-IN",{maximumFractionDigits:2})}</h4><p>Conventional total: <strong>₹${ca.toLocaleString("en-IN",{maximumFractionDigits:2})}</strong></p><p>EcoPave concept total: <strong>₹${cb.toLocaleString("en-IN",{maximumFractionDigits:2})}</strong></p><p>Difference: <strong>${Math.abs(pct).toFixed(1)}% ${diff>=0?"lower":"higher"} than conventional</strong></p><div class="notice">A fair comparison should include processing, transport, labour, moulding, curing, testing, rejects and maintenance—not just raw materials.</div>`);
+ }catch(e){showResult(out,`<h4>Check your inputs</h4><p>${e.message}</p>`)}
+});
+document.getElementById("compareBtn").addEventListener("click",()=>{
+ const out=document.getElementById("compareResult");
+ const nameA=document.getElementById("compareNameA").value.trim()||"Option A",nameB=document.getElementById("compareNameB").value.trim()||"Option B";
+ const sA=document.getElementById("compareStrengthA").value,sB=document.getElementById("compareStrengthB").value,aA=document.getElementById("compareAbsA").value,aB=document.getElementById("compareAbsB").value;
+ if([sA,sB,aA,aB].some(x=>x==="")||[sA,sB,aA,aB].some(x=>!Number.isFinite(Number(x))||Number(x)<0)){showResult(out,"<h4>Enter all four test values</h4><p>Use values from comparable laboratory tests. Do not enter assumed or target values as if they were measured results.</p>");return}
+ const A={name:nameA,strength:Number(sA),absorption:Number(aA)},B={name:nameB,strength:Number(sB),absorption:Number(aB)};
+ ecoPaveState.comparison={A,B};
+ showResult(out,`<h4>Entered test-value comparison</h4><table style="width:100%;border-collapse:collapse;font-size:.9rem"><tr><th style="text-align:left;padding:8px;border-bottom:1px solid #dfe8dc">Measure</th><th style="padding:8px;border-bottom:1px solid #dfe8dc">${nameA}</th><th style="padding:8px;border-bottom:1px solid #dfe8dc">${nameB}</th></tr><tr><td style="padding:8px;border-bottom:1px solid #dfe8dc">Compressive strength (MPa)</td><td style="text-align:center">${A.strength}</td><td style="text-align:center">${B.strength}</td></tr><tr><td style="padding:8px">Water absorption (%)</td><td style="text-align:center">${A.absorption}</td><td style="text-align:center">${B.absorption}</td></tr></table><p><strong>Observation:</strong> ${A.strength>B.strength?nameA:nameB} has the higher entered compressive strength; ${A.absorption<B.absorption?nameA:nameB} has the lower entered water absorption.</p><div class="notice">This is a numerical comparison only. Confirm specimen preparation, curing age, test method and acceptance criteria before drawing an engineering conclusion.</div>`);
+});
+document.getElementById("reportBtn").addEventListener("click",()=>{
+ const lines=["ECOPAVE — PROJECT CONCEPT SUMMARY","Generated in EcoPave Version 2","", "NOTE: Educational concept only. Estimates are not certified mix designs or construction approval.",""];
+ if(ecoPaveState.visual){const v=ecoPaveState.visual;lines.push("PAVER VISUAL",`Shape: ${v.shape}`,`Dimensions: ${v.length} × ${v.width} × ${v.thickness} mm`,"")}
+ if(ecoPaveState.batch){const b=ecoPaveState.batch;lines.push("BATCH MATERIAL ESTIMATE",`Block count: ${b.count}`,`Dimensions: ${b.lengthMm} × ${b.widthMm} × ${b.thicknessMm} mm`,`Assumed density: ${b.densityKgM3} kg/m3`,`Net volume: ${b.netVolumeM3.toFixed(5)} m3`,`Volume with allowance: ${b.estimatedBatchVolumeM3.toFixed(5)} m3`,`Estimated batch mass: ${b.estimatedMassKg.toFixed(2)} kg`,`Waste-derived fraction: ${b.wastePercent}%`,`Estimated waste-derived mass: ${b.wasteDerivedMassKg.toFixed(2)} kg`,`Remaining mass: ${b.remainingMassKg.toFixed(2)} kg`,"")}
+ if(ecoPaveState.cost){const c=ecoPaveState.cost;lines.push("COST SCENARIO",`Quantity: ${c.quantity}`,`Conventional cost per block: Rs ${c.conventionalPerBlock}`,`EcoPave cost per block: Rs ${c.ecoPavePerBlock}`,`Conventional total: Rs ${c.conventionalTotal.toFixed(2)}`,`EcoPave total: Rs ${c.ecoPaveTotal.toFixed(2)}`,`Difference (positive means estimated saving): Rs ${c.difference.toFixed(2)}`,"")}
+ if(ecoPaveState.comparison){const c=ecoPaveState.comparison;lines.push("TEST VALUE COMPARISON",`${c.A.name}: strength ${c.A.strength} MPa; absorption ${c.A.absorption}%`,`${c.B.name}: strength ${c.B.strength} MPa; absorption ${c.B.absorption}%`,"")}
+ lines.push("ENGINEERING CHECKLIST","- Characterize and process the waste material safely.","- Prepare a control mix and documented trial batches.","- Test compressive strength, water absorption and abrasion as applicable.","- Check current IS 15658 requirements and project specifications.","- Seek review by a qualified supervisor before any real-world application.");
+ const blob=new Blob([lines.join("\\n")],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="EcoPave_Project_Summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+ document.getElementById("reportStatus").textContent="Your summary file has been generated.";
+});
+
+</script>
+</body>
+</html>
